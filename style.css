@@ -1,0 +1,270 @@
+/* 基础重置与变量 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-soft: #3b82f6;
+    --bg-body: #f3f4f6;
+    --surface: #ffffff;
+    --surface-dark: #1e1e1e;
+    --border: #e5e7eb;
+    --border-focus: #3b82f6;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --radius: 12px;
+    --transition: all 0.2s ease;
+}
+
+body {
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-body);
+    color: var(--text);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 卡片样式 */
+.left-panel,
+.right-panel {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+}
+
+/* 文本域 */
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 4px);
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    transition: var(--transition);
+    background: var(--bg-body);
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* 辅助信息 */
+.info {
+    font-size: 12px;
+    color: var(--text-light);
+    margin: 8px 0 4px;
+}
+
+/* 行布局 */
+.row {
+    display: flex;
+    gap: 15px;
+    margin: 16px 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+label {
+    min-width: 130px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* 数字输入框 */
+input[type="number"] {
+    width: 90px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 6px);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 按钮基础 */
+button {
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: calc(var(--radius) - 4px);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+/* 按钮组 */
+.btn-group {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    flex-wrap: wrap;
+}
+
+/* 选项卡 */
+.tab {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+    background: var(--bg-body);
+    padding: 4px;
+    border-radius: calc(var(--radius) - 4px);
+    width: fit-content;
+}
+
+.tab button {
+    background: transparent;
+    color: var(--text);
+    box-shadow: none;
+    padding: 8px 20px;
+    border-radius: calc(var(--radius) - 6px);
+    font-weight: 500;
+}
+
+.tab button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: none;
+    box-shadow: none;
+}
+
+.tab button.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+/* 预览区域 */
+#previewArea {
+    background: #111;
+    padding: 24px;
+    border-radius: var(--radius);
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+#previewArea pre {
+    font-size: 5px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    color: #0f0;
+    /* 经典绿色，也可改为白色或青色 */
+    text-shadow: 0 0 2px #0f0;
+}
+
+/* 代码输出区域 */
+#codeOutput {
+    background: var(--surface-dark);
+    color: #f8f8f2;
+    padding: 18px;
+    border-radius: var(--radius);
+    overflow: auto;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    border: 1px solid #2d2d2d;
+    box-shadow: inset 0 0 0 1px #3a3a3a;
+}
+
+/* 代码高亮配色（适配深色背景） */
+.token.bash {
+    color: #a6e22e;
+}
+
+.token.comment {
+    color: #75715e;
+    font-style: italic;
+}
+
+.token.string {
+    color: #e6db74;
+}
+
+.token.keyword {
+    color: #f92672;
+    font-weight: bold;
+}
+
+.token.function {
+    color: #66d9ef;
+}
+
+.token.number {
+    color: #ae81ff;
+}
+
+/* 滚动条美化（可选） */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

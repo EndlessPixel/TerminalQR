@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>终端专业二维码生成器</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+</head>
+
+<body>
+    <h3 style="text-align:center;margin-bottom:20px">终端专业二维码生成器</h3>
+
+    <div class="container">
+        <div class="left-panel">
+            <textarea id="text" placeholder="输入要生成的内容（URL、文本等）"></textarea>
+            <div class="info" id="charCount">字符数：0 / 最大：233（QR Code 版本7）</div>
+
+            <label>网页预览模块宽度：</label>
+            <input type="number" id="previewWidth" value="2" min="1" max="4">
+            <br><br>
+            <label>终端脚本模块宽度：</label>
+            <input type="number" id="terminalWidth" value="2" min="1" max="4">
+
+            <div class="tab">
+                <button class="active" onclick="switchType('windows')">Windows .bat</button>
+                <button onclick="switchType('powershell')">PowerShell .ps1</button>
+                <button onclick="switchType('linux')">Linux/mac .sh</button>
+            </div>
+
+            <div class="btn-group">
+                <button onclick="generate()">生成脚本 & 预览</button>
+                <button onclick="copyScript()">复制脚本</button>
+                <button onclick="downloadScript()">下载脚本</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div>
+                <h4>网页预览（1:1 比例）</h4>
+                <details>
+                    <summary>查看</summary>
+                    <div id="previewArea">
+                        <pre>请输入内容并点击生成</pre>
+                    </div>
+                </details>
+            </div>
+
+            <div>
+                <h4>生成的终端脚本</h4>
+                <details open>
+                    <summary>查看</summary>
+                    <div id="codeOutput">
+                        <pre class="token bash">请先生成脚本</pre>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
